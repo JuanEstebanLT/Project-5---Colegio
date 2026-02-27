@@ -22,7 +22,7 @@ router.get('/estudiantes', (req, res) => {
     res.json({ success: true, total: filteredEstudiantes.length, data: filteredEstudiantes });
 });
 
-// GET - Obtener por ID [cite: 79]
+// GET - Obtener por ID 
 router.get('/estudiantes:id', (req, res) => {
     const estudiante = estudiantes.find(e => e.id === parseInt(req.params.id));
     
