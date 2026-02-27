@@ -7,7 +7,7 @@ let estudiantes = [
     { id: 2, nombre: 'Maria Lopez', email: 'maria@sena.edu.co', grado: '11B', activo: true },
 ];
 
-// GET - Obtener todos (Incluye Filtro Query Params) [cite: 107, 115]
+// GET - Obtener todos (Incluye Filtro Query Params) 
 router.get('/estudiantes', (req, res) => {
     const { nombre, email, grado, activo } = req.query; // Query params 
     
@@ -27,19 +27,19 @@ router.get('/estudiantes:id', (req, res) => {
     const estudiante = estudiantes.find(e => e.id === parseInt(req.params.id));
     
     if (!estudiante) {
-        return res.status(404).json({ success: false, message: 'Estudiante no encontrado' }); // [cite: 105]
+        return res.status(404).json({ success: false, message: 'Estudiante no encontrado' }); 
     }
     
-    res.json({ success: true, data: estudiante }); // [cite: 103]
+    res.json({ success: true, data: estudiante }); 
 });
 
-// POST - Crear estudiante (Incluye validación de Header) [cite: 82, 117]
+// POST - Crear estudiante (Incluye validación de Header) 
 router.post('/estudiantes', (req, res) => {
-    // Lectura de Header obligatorio para este endpoint [cite: 121]
+    // Lectura de Header obligatorio para este endpoint
     const auth = req.headers['authorization'];
 
     if (!auth) {
-        return res.status(400).json({ success: false, message: 'Header Authorization es requerido' }); // [cite: 106]
+        return res.status(400).json({ success: false, message: 'Header Authorization es requerido' }); 
     }
 
     const { nombre, email, grado } = req.body;
@@ -57,10 +57,10 @@ router.post('/estudiantes', (req, res) => {
     };
 
     estudiantes.push(nuevo);
-    res.status(201).json({ success: true, data: nuevo }); // [cite: 104]
+    res.status(201).json({ success: true, data: nuevo }); 
 });
 
-// PUT - Actualizar por ID [cite: 82]
+// PUT - Actualizar por ID 
 router.put('/estudiantes:id', (req, res) => {
     const estudiante = estudiantes.find(e => e.id === parseInt(req.params.id));
     if (!estudiante) return res.status(404).json({ success: false, message: 'No encontrado' });
@@ -74,7 +74,7 @@ router.put('/estudiantes:id', (req, res) => {
     res.json({ success: true, data: estudiante });
 });
 
-// DELETE - Eliminar por ID [cite: 82]
+// DELETE - Eliminar por ID
 router.delete('/estudiantes:id', (req, res) => {
     const index = estudiantes.findIndex(e => e.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ success: false, message: 'No encontrado' });

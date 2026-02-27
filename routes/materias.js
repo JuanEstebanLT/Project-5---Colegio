@@ -8,7 +8,7 @@ let materias = [
     { id: 3, nombre: 'Quimica', descripcion: 'Nivel Técnico', activa: true }
 ];
 
-// GET - Obtener todas las materias (con Filtro Dinámico por Query Params) [cite: 107]
+// GET - Obtener todas las materias (con Filtro Dinámico por Query Params) 
 router.get('/materias', (req, res) => {
     const { nombre, descripcion, activa } = req.query; // Query params 
     

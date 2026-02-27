@@ -7,7 +7,7 @@ let profesores = [
     { id: 3, nombre: 'Guillermo', email: 'Guillermo@sena.edu.co', materia: 'Matematicas', activo: true },
 ];
 
-// GET - Obtener todos con filtro dinámico [cite: 107]
+// GET - Obtener todos con filtro dinámico 
 router.get('/profesores', (req, res) => {
     const idioma = req.headers['accept-language'] || 'es';
     const { nombre, email, materia, activo } = req.query; // Query params 
