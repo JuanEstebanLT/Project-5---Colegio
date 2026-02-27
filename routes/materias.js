@@ -10,16 +10,15 @@ let materias = [
 
 // GET - Obtener todas las materias (con Filtro Dinámico por Query Params) [cite: 107]
 router.get('/materias', (req, res) => {
-    const filtros = req.query;
+    const { nombre, descripcion, activa } = req.query; // Query params 
     
-    // Lógica de filtrado dinámico según la guía 
-    const data = materias.filter(m =>
-        Object.entries(filtros).every(([k, v]) =>
-            m[k]?.toString().toLowerCase().includes(v.toLowerCase())
-        )
-    );
+    let filteredMaterias = materias.filter(m => {
+        return (!nombre || m.nombre.toLowerCase().includes(nombre.toLowerCase())) &&
+               (!descripcion || m.descripcion.toLowerCase().includes(descripcion.toLowerCase())) &&
+               (activa === undefined || m.activa.toString() === activa);
+    });
 
-    res.json({ success: true, total: data.length, data }); 
+    res.json({ success: true, total: filteredMaterias.length, data: filteredMaterias });
 });
 
 // GET - Obtener una materia por ID (con validación de Header) 

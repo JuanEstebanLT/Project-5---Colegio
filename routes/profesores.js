@@ -9,21 +9,17 @@ let profesores = [
 
 // GET - Obtener todos con filtro dinámico [cite: 107]
 router.get('/profesores', (req, res) => {
-    const idioma = req.headers['accept-language'] || 'es'; // Lectura de header 
-    const filtros = req.query;
-
-    const data = profesores.filter(p =>
-        Object.entries(filtros).every(([k, v]) =>
-            p[k]?.toString().toLowerCase().includes(v.toLowerCase())
-        )
-    );
-
-    res.json({ 
-        success: true, 
-        idioma_detectado: idioma, 
-        total: data.length, 
-        data 
+    const idioma = req.headers['accept-language'] || 'es';
+    const { nombre, email, materia, activo } = req.query; // Query params 
+    
+    let filteredProfesores = profesores.filter(p => {
+        return (!nombre || p.nombre.toLowerCase().includes(nombre.toLowerCase())) &&
+               (!email || p.email.toLowerCase().includes(email.toLowerCase())) &&
+               (!materia || p.materia.toLowerCase().includes(materia.toLowerCase())) &&
+               (activo === undefined || p.activo.toString() === activo);
     });
+
+    res.json({ success: true, idioma_detectado: idioma, total: filteredProfesores.length, data: filteredProfesores });
 });
 
 // GET - Por ID

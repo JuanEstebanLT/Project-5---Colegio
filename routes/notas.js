@@ -9,15 +9,16 @@ let notas = [
 
 // GET - Obtener todas las notas (con filtro por query params) 
 router.get('/notas', (req, res) => {
-    const filtros = req.query;
+    const { estudianteId, materia, valor, fecha } = req.query; // Query params 
     
-    const data = notas.filter(n =>
-        Object.entries(filtros).every(([k, v]) =>
-            n[k]?.toString().toLowerCase().includes(v.toLowerCase())
-        )
-    );
+    let filteredNotas = notas.filter(n => {
+        return (!estudianteId || n.estudianteId === parseInt(estudianteId)) &&
+               (!materia || n.materia.toLowerCase().includes(materia.toLowerCase())) &&
+               (!valor || n.valor === parseFloat(valor)) &&
+               (!fecha || n.fecha === fecha);
+    });
 
-    res.json({ success: true, total: data.length, data });
+    res.json({ success: true, total: filteredNotas.length, data: filteredNotas });
 });
 
 // GET - Obtener una nota por ID

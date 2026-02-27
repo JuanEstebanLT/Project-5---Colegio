@@ -9,16 +9,17 @@ let estudiantes = [
 
 // GET - Obtener todos (Incluye Filtro Query Params) [cite: 107, 115]
 router.get('/estudiantes', (req, res) => {
-    const filtros = req.query;
+    const { nombre, email, grado, activo } = req.query; // Query params 
     
-    // Lógica de filtrado dinámico [cite: 110, 111]
-    const data = estudiantes.filter(e =>
-        Object.entries(filtros).every(([k, v]) =>
-            e[k]?.toString().toLowerCase().includes(v.toLowerCase())
-        )
-    );
+    let filteredEstudiantes = estudiantes.filter(e => {
+        return (!nombre || e.nombre.toLowerCase().includes(nombre.toLowerCase())) &&
+               (!email || e.email.toLowerCase().includes(email.toLowerCase())) &&
+               (!grado || e.grado.toLowerCase().includes(grado.toLowerCase())) &&
+               (activo === undefined || e.activo.toString() === activo);
+    });
 
-    res.json({ success: true, total: data.length, data });
+    // ¡Aquí devolvemos la variable filtrada, no el arreglo original!
+    res.json({ success: true, total: filteredEstudiantes.length, data: filteredEstudiantes });
 });
 
 // GET - Obtener por ID [cite: 79]
