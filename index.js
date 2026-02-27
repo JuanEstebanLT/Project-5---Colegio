@@ -14,10 +14,10 @@ const notasRoutes = require('./routes/notas');
 
 // Registro de las rutas en la aplicación
 // Cada una tendrá su propio prefijo para que el código esté organizado
-app.use('/estudiantes', estudiantesRoutes);
-app.use('/profesores', profesoresRoutes);
-app.use('/materias', materiasRoutes);
-app.use('/notas', notasRoutes);
+app.use('/Api', estudiantesRoutes);
+app.use('/Api', profesoresRoutes);
+app.use('/Api', materiasRoutes);
+app.use('/Api', notasRoutes);
 
 // Ruta base opcional para verificar que el servidor funciona
 app.get('/', (req, res) => {
