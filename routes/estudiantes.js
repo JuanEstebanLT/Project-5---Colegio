@@ -23,7 +23,7 @@ router.get('/estudiantes', (req, res) => {
 });
 
 // GET - Obtener por ID 
-router.get('/estudiantes:id', (req, res) => {
+router.get('/estudiantes/:id', (req, res) => {
     const estudiante = estudiantes.find(e => e.id === parseInt(req.params.id));
     
     if (!estudiante) {
