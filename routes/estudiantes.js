@@ -6,7 +6,7 @@ let estudiantes = [
     { id: 1, nombre: 'Juan Perez', email: 'juan@sena.edu.co', grado: '10A', activo: true },
     { id: 2, nombre: 'Maria Lopez', email: 'maria@sena.edu.co', grado: '11B', activo: true },
 ];
-
+ 
 // GET - Obtener todos (Incluye Filtro Query Params) 
 router.get('/estudiantes', (req, res) => {
     const { nombre, email, grado, activo } = req.query; // Query params 
