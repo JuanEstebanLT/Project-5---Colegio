@@ -24,10 +24,11 @@ router.get('/notas', (req, res) => {
         });
     }
 
-    const { estudianteId, materia, valor } = req.query;
+    const { estudianteId, materia, valor, profesorid } = req.query;
 
     let filteredNotas = notas.filter(n => {
         return ((!estudianteId || n.estudianteId === parseInt(estudianteId))) &&
+               (!profesorid || n.profesorid === parseInt(profesorid)) &&
                (!materia || n.materia.toLowerCase().includes(materia.toLowerCase())) &&
                (!valor || n.valor === parseFloat(valor));
     });
