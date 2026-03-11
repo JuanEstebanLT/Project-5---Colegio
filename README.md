@@ -59,3 +59,11 @@ Registro de calificaciones.
 ---
 **Instructor:** Mateo
 **Programa:** Tecnología en Análisis y Desarrollo de Software
+
+---
+**Diagrama entidad relacion**
+
+<img width="1106" height="474" alt="{71F0CD5A-DA56-4EE2-BA18-F5115F0D120F}" src="https://github.com/user-attachments/assets/9e9ded30-9194-447f-a5d1-dec19a996e51" />
+
+
+
