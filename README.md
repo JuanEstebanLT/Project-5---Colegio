@@ -59,6 +59,7 @@ Registro de calificaciones.
 ---
 **Instructor:** Mateo
 **Programa:** Tecnología en Análisis y Desarrollo de Software
+<<<<<<< HEAD
 
 ---
 **Diagrama entidad relacion**
@@ -67,3 +68,5 @@ Registro de calificaciones.
 
 
 
+=======
+>>>>>>> 3a6c726 (Se modificaron espacios y lineas erroneas)

@@ -1,5 +1,3 @@
-const sqLite3 = require('sqlite3').verbosa;
-
 const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./database.db', (err) => {
