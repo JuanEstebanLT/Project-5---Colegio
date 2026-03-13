@@ -25,9 +25,9 @@ router.get('/notas', authGet, (req, res) => {
     const params = [];
 
     if (estudianteId) { query += ' AND EstudianteId = ?'; params.push(parseInt(estudianteId)); }
-    if (profesorid)   { query += ' AND ProfesorId = ?';   params.push(parseInt(profesorid)); }
-    if (materiaId)    { query += ' AND MateriaId = ?';    params.push(parseInt(materiaId)); }
-    if (valor)        { query += ' AND Valor = ?';        params.push(parseFloat(valor)); }
+    if (profesorid) { query += ' AND ProfesorId = ?'; params.push(parseInt(profesorid)); }
+    if (materiaId) { query += ' AND MateriaId = ?'; params.push(parseInt(materiaId)); }
+    if (valor) { query += ' AND Valor = ?'; params.push(parseFloat(valor)); }
 
     db.all(query, params, (err, rows) => {
         if (err) return res.status(500).json({ success: false, message: err.message });

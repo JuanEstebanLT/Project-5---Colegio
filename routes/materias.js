@@ -24,7 +24,7 @@ router.get('/materias', authGet, (req, res) => {
     let query = 'SELECT * FROM Materias WHERE 1=1';
     const params = [];
 
-    if (nombre)      { query += ' AND Nombre LIKE ?';      params.push(`%${nombre}%`); }
+    if (nombre) { query += ' AND Nombre LIKE ?'; params.push(`%${nombre}%`); }
     if (descripcion) { query += ' AND Descripcion LIKE ?'; params.push(`%${descripcion}%`); }
     if (activa !== undefined && activa !== '') {
         query += ' AND Activa = ?';

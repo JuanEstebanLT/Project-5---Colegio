@@ -18,8 +18,10 @@ app.get('/', (req, res) => {
     res.json({ success: true, message: "Bienvenido a la API del Proyecto 5 - Colegio (SENA)" });
 });
 
-// Render asigna el puerto automáticamente
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
+    console.log(`-----------------------------------------`);
     console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`Proyecto 5: Gestión de Colegio listo.`);
+    console.log(`-----------------------------------------`);
 });

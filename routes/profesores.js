@@ -24,11 +24,11 @@ router.get('/maestros', authGet, (req, res) => {
     let query = 'SELECT * FROM Profesores WHERE 1=1';
     const params = [];
 
-    if (nombre)       { query += ' AND Nombre LIKE ?';       params.push(`%${nombre}%`); }
-    if (apellido)     { query += ' AND Apellido LIKE ?';      params.push(`%${apellido}%`); }
-    if (especialidad) { query += ' AND Especialidad LIKE ?';  params.push(`%${especialidad}%`); }
-    if (email)        { query += ' AND Email LIKE ?';         params.push(`%${email}%`); }
-    if (telefono)     { query += ' AND Telefono LIKE ?';      params.push(`%${telefono}%`); }
+    if (nombre) { query += ' AND Nombre LIKE ?'; params.push(`%${nombre}%`); }
+    if (apellido) { query += ' AND Apellido LIKE ?'; params.push(`%${apellido}%`); }
+    if (especialidad) { query += ' AND Especialidad LIKE ?'; params.push(`%${especialidad}%`); }
+    if (email) { query += ' AND Email LIKE ?'; params.push(`%${email}%`); }
+    if (telefono) { query += ' AND Telefono LIKE ?'; params.push(`%${telefono}%`); }
 
     db.all(query, params, (err, rows) => {
         if (err) return res.status(500).json({ success: false, message: err.message });
