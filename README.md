@@ -1,72 +1,86 @@
-# Mi API REST - Gestión Colegio
+# API REST – Gestión Colegio
 **SENA - Centro de Servicios y Gestión Empresarial**
 
-API desarrollada con Node.js y Express que implementa un CRUD completo para la gestión académica, siguiendo los lineamientos de la Guía de Actividad.
+## Equipo
+- Juan Esteban Lezcano Tejada
+- Valeria Usuga Penagos
 
-## 📌 Estructura de Endpoints
+## 🌐 URL de la API en producción
+https://project-5-colegio.onrender.com
 
-### 1. Estudiantes
-Administra el registro de alumnos.
-| Método | Endpoint | Descripción |
-| :--- | :--- | :--- |
-| GET | `/estudiantes` | Lista todos los estudiantes (Filtros por Query Params) |
-| GET | `/estudiantes/:id` | Busca un estudiante específico por ID |
-| POST | `/estudiantes` | Crea un estudiante (Requiere Header: `Authorization`) |
-| PUT | `/estudiantes/:id` | Actualiza la información del estudiante |
-| DELETE | `/estudiantes/:id` | Elimina un estudiante del sistema |
+## 🔐 Autenticación
+Todos los endpoints requieren el header:
+```
+password: [valor de la API_PASSWORD]
+```
+Para endpoints POST, PUT y DELETE también se requiere:
+```
+x-user-role: admin
+```
 
-### 2. Profesores
-Gestión de la planta docente.
-| Método | Endpoint | Descripción |
-| :--- | :--- | :--- |
-| GET | `/profesores` | Lista profesores (Usa Header: `accept-language`) |
-| GET | `/profesores/:id` | Busca un profesor por ID |
-| POST | `/profesores` | Registra un nuevo docente |
-| PUT | `/profesores/:id` | Actualiza datos del profesor |
-| DELETE | `/profesores/:id` | Elimina un profesor |
+## 📌 Endpoints
 
-### 3. Materias
-Catálogo de asignaturas del colegio.
-| Método | Endpoint | Descripción |
-| :--- | :--- | :--- |
-| GET | `/materias` | Lista materias con filtrado dinámico |
-| GET | `/materias/:id` | Busca materia (Requiere Header: `password`) |
-| POST | `/materias` | Crea una nueva asignatura |
-| PUT | `/materias/:id` | Actualiza datos de la materia |
-| DELETE | `/materias/:id` | Elimina una materia |
+### Estudiantes
+```
+GET    /Api/estudiantes          - Lista todos (soporta filtro por query)
+GET    /Api/estudiantes/:id      - Busca por ID
+POST   /Api/estudiantes          - Crea uno nuevo
+PUT    /Api/estudiantes/:id      - Actualiza
+DELETE /Api/estudiantes/:id      - Elimina
+```
 
-### 4. Notas
-Registro de calificaciones.
-| Método | Endpoint | Descripción |
-| :--- | :--- | :--- |
-| GET | `/notas` | Lista todas las notas registradas |
-| GET | `/notas/:id` | Busca una calificación por ID |
-| POST | `/notas` | Registra una nota (Maneja mensajes por idioma) |
-| PUT | `/notas/:id` | Modifica el valor de una nota |
-| DELETE | `/notas/:id` | Elimina un registro de nota |
+### Maestros (Profesores)
+```
+GET    /Api/maestros             - Lista todos (soporta filtro por query)
+GET    /Api/maestros/:id         - Busca por ID
+POST   /Api/maestros             - Crea uno nuevo
+PUT    /Api/maestros/:id         - Actualiza
+DELETE /Api/maestros/:id         - Elimina
+```
 
-## 🛠️ Requisitos Técnicos Implementados
-- **CRUD Completo:** Implementado en las 4 entidades.
-- **Códigos de Estado:** Uso de 200, 201, 400, 401 y 404 según la guía.
-- **Parámetros:** Uso de `req.params`, `req.query` y `req.headers`.
-- **Estructura Modular:** Rutas separadas en archivos independientes dentro de `/routes`.
+### Materias
+```
+GET    /Api/materias             - Lista todas (soporta filtro por query)
+GET    /Api/materias/:id         - Busca por ID
+POST   /Api/materias             - Crea una nueva
+PUT    /Api/materias/:id         - Actualiza
+DELETE /Api/materias/:id         - Elimina
+```
 
-## 🚀 Instrucciones de Ejecución
+### Notas
+```
+GET    /Api/notas                - Lista todas (soporta filtro por query)
+GET    /Api/notas/:id            - Busca por ID
+POST   /Api/notas                - Crea una nueva
+PUT    /Api/notas/:id            - Actualiza
+DELETE /Api/notas/:id            - Elimina
+```
+
+## 💡 Ejemplos de uso
+```bash
+# Consultar estudiantes
+curl https://project-5-colegio.onrender.com/Api/estudiantes \
+     -H "password: 12345"
+
+# Crear un estudiante
+curl -X POST https://project-5-colegio.onrender.com/Api/estudiantes \
+     -H "password: 6789" \
+     -H "x-user-role: admin" \
+     -H "Content-Type: application/json" \
+     -d '{"nombre":"Juan","apellido":"Perez","genero":"M","email":"juan@mail.com"}'
+```
+
+## 🚀 Instrucciones de ejecución local
 1. Instalar dependencias: `npm install`
-2. Correr servidor: `node index.js`
-3. Probar en Postman en `http://localhost:3000`
+2. Crear archivo `.env` con las variables de entorno
+3. Correr servidor: `node index.js`
+4. Probar en Postman en `http://localhost:3000`
+
+## 📦 Repositorios GitHub
+- https://github.com/JuanEstebanLT/Project-5---Colegio
+- https://github.com/valeriaup/colegio
 
 ---
-**Instructor:** Mateo
-**Programa:** Tecnología en Análisis y Desarrollo de Software
-<<<<<<< HEAD
-
----
-**Diagrama entidad relacion**
-
-<img width="1106" height="474" alt="{71F0CD5A-DA56-4EE2-BA18-F5115F0D120F}" src="https://github.com/user-attachments/assets/9e9ded30-9194-447f-a5d1-dec19a996e51" />
-
-
-
-=======
->>>>>>> 3a6c726 (Se modificaron espacios y lineas erroneas)
+**Instructor:** Mateo  
+**Programa:** Tecnología en Análisis y Desarrollo de Software  
+**SENA – Centro de Servicios y Gestión Empresarial**
